@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            border: none;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="btn btn-primary">Regresar</a>
+    </nav>
+    <div class="container">
+        <h2>Informe de Comportamiento</h2>
+        <form id="reportForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre del pasajero" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese el apellido del pasajero" required>
+            </div>
+            <div class="form-group">
+                <label for="nickNames">Nicknames:</label>
+                <input type="text" id="nickNames" name="nickNames" class="form-control" placeholder="Ingresa los nombres de fantasía" required>
+            </div>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad:</label>
+                <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" placeholder="Ingrese la nacionalidad del pasajero" required>
+            </div>
+            <div class="form-group">
+                <label for="imagen">URL de la Foto:</label>
+                <input type="url" id="imagen" name="imagen" class="form-control" placeholder="Ingrese la URL de la foto" required>
+            </div>
+            <div class="form-group">
+                <label for="CI_or_passport">URL de CI o Pasaporte:</label>
+                <input type="url" id="CI_or_passport" name="CI_or_passport" class="form-control" placeholder="Ingrese la URL de CI o Pasaporte" required>
+            </div>
+            <div class="form-group">
+                <label for="rut">RUT:</label>
+                <input type="text" id="rut" name="rut" class="form-control" placeholder="Ingrese el rut del pasajero" required>
+            </div>
+            <div class="form-group">
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" name="genero" class="form-control" placeholder="Ingrese el genero del pasajero" required>
+            </div>
+            <div class="form-group">
+                <label for="paga_puntual">Paga Puntual:</label>
+                <select id="paga_puntual" name="paga_puntual" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="HabitacionLimpiaYOrdenada">Habitación Limpia y Ordenada:</label>
+                <select id="HabitacionLimpiaYOrdenada" name="HabitacionLimpiaYOrdenada" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="TranquilaYOrdenada">Tranquila y Ordenada:</label>
+                <select id="TranquilaYOrdenada" name="TranquilaYOrdenada" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ConsumeMarihuana">Consume Marihuana:</label>
+                <select id="ConsumeMarihuana" name="ConsumeMarihuana" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ConsumeOtrasDrogas">Consume Otras Drogas:</label>
+                <select id="ConsumeOtrasDrogas" name="ConsumeOtrasDrogas" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ConsumoAlcoholExesivo">Consumo Alcohol Excesivo:</label>
+                <select id="ConsumoAlcoholExesivo" name="ConsumoAlcoholExesivo" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="AmenazaPolicia">Amenaza a la Policía:</label>
+                <select id="AmenazaPolicia" name="AmenazaPolicia" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amenazaExtranjeros">Amenaza a Extranjeros:</label>
+                <select id="amenazaExtranjeros" name="amenazaExtranjeros" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Destrozos">Destrozos:</label>
+                <select id="Destrozos" name="Destrozos" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="GritaEInsultaArrendatario">Grita e Insulta al Arrendatario:</label>
+                <select id="GritaEInsultaArrendatario" name="GritaEInsultaArrendatario" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Robos">Robos:</label>
+                <select id="Robos" name="Robos" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="BuenasRelacionesPasajeros">Buenas Relaciones con Pasajeros:</label>
+                <select id="BuenasRelacionesPasajeros" name="BuenasRelacionesPasajeros" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="AvisaConAntisipaciínRetirada">Avisa con Anticipación la Retirada:</label>
+                <select id="AvisaConAntisipaciínRetirada" name="AvisaConAntisipaciínRetirada" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Independiante">Independiente:</label>
+                <select id="Independiante" name="Independiante" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="privado">Privado:</label>
+                <select id="privado" name="privado" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="llavero">Llavero:</label>
+                <select id="llavero" name="llavero" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="MeteGenteAgena">Mete Gente Ajena:</label>
+                <select id="MeteGenteAgena" name="MeteGenteAgena" class="form-control" required>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" class="form-control" placeholder="Ingrese un comentario breve" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Report</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reportForm = document.getElementById('reportForm');
+            reportForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(reportForm);
+
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+
+                fetch('http://localhost:9000/api/report/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(error => { throw new Error(error) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Report added successfully');
+                    reportForm.reset(); // Reset the form after successful submission
+                })
+                .catch(error => {
+                    console.error('Error adding report:', error.message);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
