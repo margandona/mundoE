@@ -75,6 +75,14 @@
                 <input type="text" id="genero" name="genero" class="form-control" placeholder="Ingrese el genero del pasajero" required>
             </div>
             <div class="form-group">
+                <label for="telefono">Número de Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ingrese el número de teléfono" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico">
+            </div>
+            <div class="form-group">
                 <label for="paga_puntual">Paga Puntual:</label>
                 <select id="paga_puntual" name="paga_puntual" class="form-control" required>
                     <option value="si">Sí</option>
@@ -204,6 +212,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const reportForm = document.getElementById('reportForm');
+            const fetchUrl = 'http://localhost:9000/api/report/'; // Change this to the desired URL
+
             reportForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const formData = new FormData(reportForm);
@@ -213,7 +223,7 @@
                     jsonData[key] = value;
                 });
 
-                fetch('http://localhost:9000/api/report/', {
+                fetch(fetchUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

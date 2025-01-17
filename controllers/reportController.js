@@ -1,4 +1,4 @@
-const { saveReport, getReport, getAllReports, updateReport, deleteReport } = require('../models/reportModel');
+const { saveReport, getReport, getAllReports, updateReport, deleteReport, getReportByCIOrPassport } = require('../models/reportModel');
 
 exports.createReport = async (req, res) => {
     const reportData = req.body;
