@@ -3,6 +3,7 @@ const { db } = require('../database/firebaseconfig');
 const collection = db.collection('reports');
 
 const saveReport = async (reportData) => {
+    reportData.creationDate = new Date().toISOString(); // Add creation date
     const docRef = await collection.add(reportData);
     return docRef.id;
 };
@@ -45,4 +46,25 @@ const getReportByCIOrPassport = async (CI_or_passport) => {
     return report;
 };
 
-module.exports = { saveReport, getReport, getAllReports, updateReport, deleteReport, getReportByCIOrPassport };
+const searchReportsInDB = async (query) => {
+    const queries = [
+        collection.where('nombre', '==', query).get(),
+        collection.where('telefono', '==', query).get(),
+        collection.where('id', '==', query).get(),
+        collection.where('nickNames', '==', query).get(),
+        collection.where('email', '==', query).get()
+    ];
+
+    const snapshots = await Promise.all(queries);
+
+    const reports = [];
+    snapshots.forEach(snapshot => {
+        snapshot.forEach(doc => {
+            reports.push({ id: doc.id, ...doc.data() });
+        });
+    });
+
+    return reports;
+};
+
+module.exports = { saveReport, getReport, getAllReports, updateReport, deleteReport, getReportByCIOrPassport, searchReportsInDB };

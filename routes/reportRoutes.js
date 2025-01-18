@@ -12,4 +12,7 @@ router.delete('/report/:id', reportController.deleteReport);
 // Asegúrate de que la función getReportByCIOrPassport esté definida en el controlador
 router.get('/report/CI_or_passport/:CI_or_passport', reportController.getReportByCIOrPassport);
 
+// New routes for searching reports
+router.get('/reports/search', reportController.searchReports);
+
 module.exports = router;

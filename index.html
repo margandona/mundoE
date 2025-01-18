@@ -38,185 +38,272 @@
 <body>
     <nav>
         <a href="#" class="btn btn-primary">Regresar</a>
+        <button id="showRegisterButton" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Registrarse</button>
+        <button id="showLoginButton" class="btn btn-secondary" data-toggle="modal" data-target="#loginModal">Iniciar Sesión</button>
+        <button id="logoutButton" class="btn btn-danger" style="display: none;">Cerrar Sesión</button>
     </nav>
-    <div class="container">
+    <div id="informeContainer" class="container" style="display: none;">
         <h2>Informe de Comportamiento</h2>
-        <form id="reportForm" enctype="multipart/form-data">
+        <button id="showFormButton" class="btn btn-secondary" data-toggle="modal" data-target="#reportModal">Mostrar Formulario</button>
+            <form id="searchForm" class="mt-3">
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre del pasajero" required>
+                <label for="searchQuery">Buscar Reporte:</label>
+                <input type="text" id="searchQuery" name="searchQuery" class="form-control" placeholder="Ingrese nombre, ID, CI o pasaporte, teléfono o nick">
             </div>
-            <div class="form-group">
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese el apellido del pasajero" required>
-            </div>
-            <div class="form-group">
-                <label for="nickNames">Nicknames:</label>
-                <input type="text" id="nickNames" name="nickNames" class="form-control" placeholder="Ingresa los nombres de fantasía" required>
-            </div>
-            <div class="form-group">
-                <label for="nacionalidad">Nacionalidad:</label>
-                <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" placeholder="Ingrese la nacionalidad del pasajero" required>
-            </div>
-            <div class="form-group">
-                <label for="imagen">URL de la Foto:</label>
-                <input type="url" id="imagen" name="imagen" class="form-control" placeholder="Ingrese la URL de la foto" required>
-            </div>
-            <div class="form-group">
-                <label for="CI_or_passport">URL de CI o Pasaporte:</label>
-                <input type="url" id="CI_or_passport" name="CI_or_passport" class="form-control" placeholder="Ingrese la URL de CI o Pasaporte" required>
-            </div>
-            <div class="form-group">
-                <label for="rut">RUT:</label>
-                <input type="text" id="rut" name="rut" class="form-control" placeholder="Ingrese el rut del pasajero" required>
-            </div>
-            <div class="form-group">
-                <label for="genero">Género:</label>
-                <input type="text" id="genero" name="genero" class="form-control" placeholder="Ingrese el genero del pasajero" required>
-            </div>
-            <div class="form-group">
-                <label for="telefono">Número de Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ingrese el número de teléfono" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico">
-            </div>
-            <div class="form-group">
-                <label for="paga_puntual">Paga Puntual:</label>
-                <select id="paga_puntual" name="paga_puntual" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="HabitacionLimpiaYOrdenada">Habitación Limpia y Ordenada:</label>
-                <select id="HabitacionLimpiaYOrdenada" name="HabitacionLimpiaYOrdenada" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="TranquilaYOrdenada">Tranquila y Ordenada:</label>
-                <select id="TranquilaYOrdenada" name="TranquilaYOrdenada" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ConsumeMarihuana">Consume Marihuana:</label>
-                <select id="ConsumeMarihuana" name="ConsumeMarihuana" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ConsumeOtrasDrogas">Consume Otras Drogas:</label>
-                <select id="ConsumeOtrasDrogas" name="ConsumeOtrasDrogas" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ConsumoAlcoholExesivo">Consumo Alcohol Excesivo:</label>
-                <select id="ConsumoAlcoholExesivo" name="ConsumoAlcoholExesivo" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="AmenazaPolicia">Amenaza a la Policía:</label>
-                <select id="AmenazaPolicia" name="AmenazaPolicia" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="amenazaExtranjeros">Amenaza a Extranjeros:</label>
-                <select id="amenazaExtranjeros" name="amenazaExtranjeros" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Destrozos">Destrozos:</label>
-                <select id="Destrozos" name="Destrozos" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="GritaEInsultaArrendatario">Grita e Insulta al Arrendatario:</label>
-                <select id="GritaEInsultaArrendatario" name="GritaEInsultaArrendatario" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Robos">Robos:</label>
-                <select id="Robos" name="Robos" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="BuenasRelacionesPasajeros">Buenas Relaciones con Pasajeros:</label>
-                <select id="BuenasRelacionesPasajeros" name="BuenasRelacionesPasajeros" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="AvisaConAntisipaciínRetirada">Avisa con Anticipación la Retirada:</label>
-                <select id="AvisaConAntisipaciínRetirada" name="AvisaConAntisipaciínRetirada" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Independiante">Independiente:</label>
-                <select id="Independiante" name="Independiante" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="privado">Privado:</label>
-                <select id="privado" name="privado" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="llavero">Llavero:</label>
-                <select id="llavero" name="llavero" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="MeteGenteAgena">Mete Gente Ajena:</label>
-                <select id="MeteGenteAgena" name="MeteGenteAgena" class="form-control" required>
-                    <option value="si">Sí</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="comentario">Comentario:</label>
-                <textarea id="comentario" name="comentario" class="form-control" placeholder="Ingrese un comentario breve" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Report</button>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button id="showAllReportsButton" type="button" class="btn btn-secondary">Mostrar Todos los Reportes</button>
         </form>
+        <div id="searchResults" class="mt-3"></div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const reportForm = document.getElementById('reportForm');
-            const fetchUrl = 'http://localhost:9000/api/report/'; // Change this to the desired URL
 
-            reportForm.addEventListener('submit', function(event) {
+    <!-- Report Modal -->
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reportModalLabel">Informe de Comportamiento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="reportForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre del pasajero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese el apellido del pasajero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nickNames">Nicknames:</label>
+                            <input type="text" id="nickNames" name="nickNames" class="form-control" placeholder="Ingresa los nombres de fantasía" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nacionalidad">Nacionalidad:</label>
+                            <input type="text" id="nacionalidad" name="nacionalidad" class="form-control" placeholder="Ingrese la nacionalidad del pasajero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen">URL de la Foto:</label>
+                            <input type="url" id="imagen" name="imagen" class="form-control" placeholder="Ingrese la URL de la foto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CI_or_passport">URL de CI o Pasaporte:</label>
+                            <input type="url" id="CI_or_passport" name="CI_or_passport" class="form-control" placeholder="Ingrese la URL de CI o Pasaporte" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rut">RUT:</label>
+                            <input type="text" id="rut" name="rut" class="form-control" placeholder="Ingrese el rut del pasajero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genero">Género:</label>
+                            <input type="text" id="genero" name="genero" class="form-control" placeholder="Ingrese el genero del pasajero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Número de Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ingrese el número de teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese el correo electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="paga_puntual">Paga Puntual:</label>
+                            <select id="paga_puntual" name="paga_puntual" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="HabitacionLimpiaYOrdenada">Habitación Limpia y Ordenada:</label>
+                            <select id="HabitacionLimpiaYOrdenada" name="HabitacionLimpiaYOrdenada" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TranquilaYOrdenada">Tranquila y Ordenada:</label>
+                            <select id="TranquilaYOrdenada" name="TranquilaYOrdenada" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ConsumeMarihuana">Consume Marihuana:</label>
+                            <select id="ConsumeMarihuana" name="ConsumeMarihuana" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ConsumeOtrasDrogas">Consume Otras Drogas:</label>
+                            <select id="ConsumeOtrasDrogas" name="ConsumeOtrasDrogas" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ConsumoAlcoholExesivo">Consumo Alcohol Excesivo:</label>
+                            <select id="ConsumoAlcoholExesivo" name="ConsumoAlcoholExesivo" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="AmenazaPolicia">Amenaza a la Policía:</label>
+                            <select id="AmenazaPolicia" name="AmenazaPolicia" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amenazaExtranjeros">Amenaza a Extranjeros:</label>
+                            <select id="amenazaExtranjeros" name="amenazaExtranjeros" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Destrozos">Destrozos:</label>
+                            <select id="Destrozos" name="Destrozos" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="GritaEInsultaArrendatario">Grita e Insulta al Arrendatario:</label>
+                            <select id="GritaEInsultaArrendatario" name="GritaEInsultaArrendatario" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Robos">Robos:</label>
+                            <select id="Robos" name="Robos" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="BuenasRelacionesPasajeros">Buenas Relaciones con Pasajeros:</label>
+                            <select id="BuenasRelacionesPasajeros" name="BuenasRelacionesPasajeros" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="AvisaConAntisipaciínRetirada">Avisa con Anticipación la Retirada:</label>
+                            <select id="AvisaConAntisipaciínRetirada" name="AvisaConAntisipaciínRetirada" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Independiante">Independiente:</label>
+                            <select id="Independiante" name="Independiante" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="privado">Privado:</label>
+                            <select id="privado" name="privado" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="llavero">Llavero:</label>
+                            <select id="llavero" name="llavero" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="MeteGenteAgena">Mete Gente Ajena:</label>
+                            <select id="MeteGenteAgena" name="MeteGenteAgena" class="form-control" required>
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comentario">Comentario:</label>
+                            <textarea id="comentario" name="comentario" class="form-control" placeholder="Ingrese un comentario breve" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="registerEmail">Correo Electrónico:</label>
+                            <input type="email" id="registerEmail" name="email" class="form-control" placeholder="Ingrese su correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña:</label>
+                            <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Correo Electrónico:</label>
+                            <input type="email" id="loginEmail" name="email" class="form-control" placeholder="Ingrese su correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña:</label>
+                            <input type="password" id="loginPassword" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="src/js/formHandler.js"></script>
+    <script>
+        $(document).ready(function() {
+            const reportForm = $('#reportForm');
+            const fetchUrl = 'https://www.sexyangeles.cl/api/report/'; // Change this to the desired URL
+
+            reportForm.on('submit', function(event) {
                 event.preventDefault();
-                const formData = new FormData(reportForm);
+                const formData = new FormData(reportForm[0]);
 
                 const jsonData = {};
                 formData.forEach((value, key) => {
@@ -238,11 +325,164 @@
                 })
                 .then(data => {
                     alert('Report added successfully');
-                    reportForm.reset(); // Reset the form after successful submission
+                    reportForm[0].reset(); // Reset the form after successful submission
+                    $('#reportModal').modal('hide'); // Hide the modal
                 })
                 .catch(error => {
                     console.error('Error adding report:', error.message);
                 });
+            });
+
+            $('#reportModal').on('show.bs.modal', function () {
+                $(this).removeAttr('inert');
+            });
+
+            $('#reportModal').on('hidden.bs.modal', function () {
+                $(this).attr('inert', '');
+            });
+
+            $('#searchForm').on('submit', function(event) {
+                event.preventDefault();
+                const query = $('#searchQuery').val();
+                const url = query ? `https://www.sexyangeles.cl/api/reports/search?query=${query}` : 'https://www.sexyangeles.cl/api/reports';
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(error => { throw new Error(error.message) });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        let resultsHtml = '<ul class="list-group">';
+                        data.forEach(report => {
+                            resultsHtml += `<li class="list-group-item">${report.nombre} - ${report.apellido} - ${report.CI_or_passport} - ${report.telefono} - ${report.nickNames}</li>`;
+                        });
+                        resultsHtml += '</ul>';
+                        $('#searchResults').html(resultsHtml);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching reports:', error.message);
+                        $('#searchResults').html(`<div class="alert alert-danger">${error.message}</div>`);
+                    });
+            });
+
+            $('#showAllReportsButton').on('click', function() {
+                fetch('https://www.sexyangeles.cl/api/reports')
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(error => { throw new Error(error.message) });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        let resultsHtml = '<ul class="list-group">';
+                        data.forEach(report => {
+                            resultsHtml += `<li class="list-group-item">${report.nombre} - ${report.apellido} - ${report.CI_or_passport} - ${report.telefono} - ${report.nickNames}</li>`;
+                        });
+                        resultsHtml += '</ul>';
+                        $('#searchResults').html(resultsHtml);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching reports:', error.message);
+                        $('#searchResults').html(`<div class="alert alert-danger">${error.message}</div>`);
+                    });
+            });
+
+            $('#registerForm').on('submit', function(event) {
+                event.preventDefault();
+                const email = $('#registerEmail').val();
+                const password = $('#registerPassword').val();
+
+                fetch('https://www.sexyangeles.cl/api/report/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw new Error(error.message) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('User registered successfully');
+                    $('#registerForm')[0].reset(); // Reset the form after successful submission
+                    $('#registerModal').modal('hide'); // Hide the modal
+                })
+                .catch(error => {
+                    console.error('Error registering user:', error.message);
+                    alert('Error registering user: ' + error.message);
+                });
+            });
+
+            $('#loginForm').on('submit', function(event) {
+                event.preventDefault();
+                const email = $('#loginEmail').val();
+                const password = $('#loginPassword').val();
+
+                fetch('https://www.sexyangeles.cl/api/report/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw new Error(error.message) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('User logged in successfully');
+                    localStorage.setItem('token', data.token); // Store token in localStorage
+                    $('#loginForm')[0].reset(); // Reset the form after successful submission
+                    $('#loginModal').modal('hide'); // Hide the modal
+                    $('#informeContainer').show(); // Show the informe container
+                    $('#logoutButton').show(); // Show the logout button
+                    $('#showRegisterButton').hide(); // Hide the register button
+                    $('#showLoginButton').hide(); // Hide the login button
+                })
+                .catch(error => {
+                    console.error('Error logging in user:', error.message);
+                    alert('Error logging in user: ' + error.message);
+                });
+            });
+
+            $('#logoutButton').on('click', function() {
+                localStorage.removeItem('token'); // Remove token from localStorage
+                $('#informeContainer').hide(); // Hide the informe container
+                $('#logoutButton').hide(); // Hide the logout button
+                $('#showRegisterButton').show(); // Show the register button
+                $('#showLoginButton').show(); // Show the login button
+                alert('User logged out successfully');
+            });
+
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('token') !== null;
+            if (isLoggedIn) {
+                $('#informeContainer').show();
+                $('#logoutButton').show();
+                $('#showRegisterButton').hide();
+                $('#showLoginButton').hide();
+            }
+
+            $('#registerModal').on('show.bs.modal', function () {
+                $(this).removeAttr('inert');
+            });
+
+            $('#registerModal').on('hidden.bs.modal', function () {
+                $(this).attr('inert', '');
+            });
+
+            $('#loginModal').on('show.bs.modal', function () {
+                $(this).removeAttr('inert');
+            });
+
+            $('#loginModal').on('hidden.bs.modal', function () {
+                $(this).attr('inert', '');
             });
         });
     </script>

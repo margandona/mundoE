@@ -1,4 +1,4 @@
-const { saveReport, getReport, getAllReports, updateReport, deleteReport, getReportByCIOrPassport } = require('../models/reportModel');
+const { saveReport, getReport, getAllReports, updateReport, deleteReport, getReportByCIOrPassport, searchReportsInDB } = require('../models/reportModel');
 
 exports.createReport = async (req, res) => {
     const reportData = req.body;
@@ -64,5 +64,20 @@ exports.getReportByCIOrPassport = async (req, res) => {
     } catch (err) {
         console.error('Error retrieving report by CI or passport:', err.message);
         res.status(500).json({ error: `Error retrieving report by CI or passport: ${err.message}` });
+    }
+};
+
+// New function to search reports by different fields
+exports.searchReports = async (req, res) => {
+    const { query } = req.query;
+    try {
+        const reports = await searchReportsInDB(query);
+        if (reports.length === 0) {
+            return res.status(404).json({ message: 'No matching reports found' });
+        }
+        res.json(reports);
+    } catch (err) {
+        console.error('Error searching reports:', err.message);
+        res.status(500).json({ error: `Error searching reports: ${err.message}` });
     }
 };
