@@ -393,7 +393,7 @@
                 const email = $('#registerEmail').val();
                 const password = $('#registerPassword').val();
 
-                fetch('https://www.sexyangeles.cl/api/report/', {
+                fetch('https://www.sexyangeles.cl/api/users/register', { // Updated URL
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -422,7 +422,7 @@
                 const email = $('#loginEmail').val();
                 const password = $('#loginPassword').val();
 
-                fetch('https://www.sexyangeles.cl/api/report/', {
+                fetch('https://www.sexyangeles.cl/api/users/login', { // Updated URL
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
