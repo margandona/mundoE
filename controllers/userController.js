@@ -1,9 +1,9 @@
 const { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithGoogle } = require('../models/userModel');
 
 exports.register = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, fullName, username, city } = req.body;
     try {
-        const userRecord = await createUserWithEmailAndPassword(email, password);
+        const userRecord = await createUserWithEmailAndPassword(email, password, fullName, username, city);
         res.status(201).json({ message: 'User registered successfully.', userRecord });
     } catch (err) {
         console.error('Error registering user:', err.message);

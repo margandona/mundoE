@@ -252,12 +252,28 @@
                 <div class="modal-body">
                     <form id="registerForm">
                         <div class="form-group">
+                            <label for="registerFullName">Nombre Completo:</label>
+                            <input type="text" id="registerFullName" name="fullName" class="form-control" placeholder="Ingrese su nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerUsername">Nick de Usuario:</label>
+                            <input type="text" id="registerUsername" name="username" class="form-control" placeholder="Ingrese su nick de usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerCity">Ciudad:</label>
+                            <input type="text" id="registerCity" name="city" class="form-control" placeholder="Ingrese su ciudad" required>
+                        </div>
+                        <div class="form-group">
                             <label for="registerEmail">Correo Electrónico:</label>
                             <input type="email" id="registerEmail" name="email" class="form-control" placeholder="Ingrese su correo electrónico" required>
                         </div>
                         <div class="form-group">
                             <label for="registerPassword">Contraseña:</label>
                             <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirmar Contraseña:</label>
+                            <input type="password" id="registerConfirmPassword" name="confirmPassword" class="form-control" placeholder="Confirme su contraseña" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
@@ -299,7 +315,7 @@
     <script>
         $(document).ready(function() {
             const reportForm = $('#reportForm');
-            const fetchUrl = 'https://www.sexyangeles.cl/api/report/'; // Change this to the desired URL
+            const fetchUrl = 'http://localhost:9000/api/report/'; // Change this to the desired URL
 
             reportForm.on('submit', function(event) {
                 event.preventDefault();
@@ -344,7 +360,7 @@
             $('#searchForm').on('submit', function(event) {
                 event.preventDefault();
                 const query = $('#searchQuery').val();
-                const url = query ? `https://www.sexyangeles.cl/api/reports/search?query=${query}` : 'https://www.sexyangeles.cl/api/reports';
+                const url = query ? `http://localhost:9000/api/reports/search?query=${query}` : 'http://localhost:9000/api/reports';
                 fetch(url)
                     .then(response => {
                         if (!response.ok) {
@@ -367,7 +383,7 @@
             });
 
             $('#showAllReportsButton').on('click', function() {
-                fetch('https://www.sexyangeles.cl/api/reports')
+                fetch('http://localhost:9000/api/reports')
                     .then(response => {
                         if (!response.ok) {
                             return response.json().then(error => { throw new Error(error.message) });
@@ -390,23 +406,36 @@
 
             $('#registerForm').on('submit', function(event) {
                 event.preventDefault();
+                const fullName = $('#registerFullName').val();
+                const username = $('#registerUsername').val();
+                const city = $('#registerCity').val();
                 const email = $('#registerEmail').val();
                 const password = $('#registerPassword').val();
+                const confirmPassword = $('#registerConfirmPassword').val();
 
-                fetch('https://www.sexyangeles.cl/api/users/register', { // Updated URL
+                if (password !== confirmPassword) {
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+
+                console.log('Registering user:', { fullName, username, city, email, password }); // Add logging
+
+                fetch('http://localhost:9000/api/users/register', { // Ensure this URL is correct
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email, password })
+                    body: JSON.stringify({ fullName, username, city, email, password })
                 })
                 .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(error => { throw new Error(error.message) });
-                    }
-                    return response.json();
+                    console.log('Register response status:', response.status); // Add logging
+                    return response.json().then(data => ({ status: response.status, data }));
                 })
-                .then(data => {
+                .then(({ status, data }) => {
+                    if (status !== 201) {
+                        throw new Error(data.error || 'Registration failed');
+                    }
+                    console.log('Register success:', data); // Add logging
                     alert('User registered successfully');
                     $('#registerForm')[0].reset(); // Reset the form after successful submission
                     $('#registerModal').modal('hide'); // Hide the modal
@@ -422,7 +451,9 @@
                 const email = $('#loginEmail').val();
                 const password = $('#loginPassword').val();
 
-                fetch('https://www.sexyangeles.cl/api/users/login', { // Updated URL
+                console.log('Logging in user:', { email, password }); // Add logging
+
+                fetch('http://localhost:9000/api/users/login', { // Ensure this URL is correct
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -430,12 +461,14 @@
                     body: JSON.stringify({ email, password })
                 })
                 .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(error => { throw new Error(error.message) });
-                    }
-                    return response.json();
+                    console.log('Login response status:', response.status); // Add logging
+                    return response.json().then(data => ({ status: response.status, data }));
                 })
-                .then(data => {
+                .then(({ status, data }) => {
+                    if (status !== 200) {
+                        throw new Error(data.error || 'Login failed');
+                    }
+                    console.log('Login success:', data); // Add logging
                     alert('User logged in successfully');
                     localStorage.setItem('token', data.token); // Store token in localStorage
                     $('#loginForm')[0].reset(); // Reset the form after successful submission
